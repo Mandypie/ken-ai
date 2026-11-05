@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Ken AI logo">
+  <defs>
+    <linearGradient id="ken-grad-main" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7C5CFF" />
+      <stop offset="50%" stop-color="#FF6FB5" />
+      <stop offset="100%" stop-color="#FFC46B" />
+    </linearGradient>
+
+    <linearGradient id="ken-grad-alt" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFC46B" />
+      <stop offset="55%" stop-color="#FF6FB5" />
+      <stop offset="100%" stop-color="#7C5CFF" />
+    </linearGradient>
+
+    <radialGradient id="ken-core" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="1" />
+      <stop offset="35%" stop-color="#FFD54F" stop-opacity="0.9" />
+      <stop offset="70%" stop-color="#FF6FB5" stop-opacity="0.45" />
+      <stop offset="100%" stop-color="#7C5CFF" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Outer cosmic ring -->
+  <circle
+    cx="32"
+    cy="32"
+    r="28"
+    fill="none"
+    stroke="url(#ken-grad-main)"
+    stroke-width="1.2"
+    stroke-dasharray="3 4"
+    opacity="0.25"
+  />
+
+  <!-- Tilted orbital ellipse -->
+  <ellipse
+    cx="32"
+    cy="32"
+    rx="26"
+    ry="11.5"
+    transform="rotate(-28 32 32)"
+    fill="none"
+    stroke="url(#ken-grad-alt)"
+    stroke-width="2"
+    stroke-linecap="round"
+    opacity="0.65"
+  />
+
+  <!-- The Celestial 'K' Letterform -->
+  <path
+    d="M19 12 C18 24, 18 40, 19 52"
+    fill="none"
+    stroke="url(#ken-grad-main)"
+    stroke-width="4.8"
+    stroke-linecap="round"
+  />
+
+  <path
+    d="M21 32 C26 23, 34 16, 47 12.5 C49.5 11.8, 50.8 14.2, 48.8 15.8 C39 23.5, 30.5 29.5, 23 33.5 Z"
+    fill="url(#ken-grad-main)"
+    opacity="0.95"
+  />
+
+  <path
+    d="M22 31 C30.5 36, 39 42, 48 49 C50 50.8, 48.5 53, 46.2 51.8 C35.5 46, 27 38.5, 21 33 Z"
+    fill="url(#ken-grad-alt)"
+    opacity="0.95"
+  />
+
+  <!-- Glowing Singularity Core -->
+  <circle cx="21" cy="32" r="7.5" fill="url(#ken-core)" />
+  <circle cx="21" cy="32" r="2.8" fill="#FFFFFF" />
+
+  <!-- Stellar Apex Sparkle -->
+  <circle cx="48.5" cy="13.5" r="2.2" fill="#FFC46B" />
+  <circle cx="48.5" cy="13.5" r="1.1" fill="#FFFFFF" />
+</svg>
