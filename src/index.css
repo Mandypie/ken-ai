@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+@import "tailwindcss";
+
+/* ── Theme tokens ── */
+:root {
+  --bg: #070812;
+  --surface: #0E1020;
+  --surface-2: #151833;
+  --border: rgba(255,255,255,0.08);
+  --text: #EEF0FA;
+  --muted: #8D93B8;
+  --accent-1: #7C5CFF;
+  --accent-2: #FF6FB5;
+  --accent-3: #FFC46B;
+  --accent-gradient: linear-gradient(135deg, var(--accent-1), var(--accent-2), var(--accent-3));
+  --accent-text-gradient: linear-gradient(135deg, var(--accent-1), var(--accent-2), var(--accent-3));
+  --radius-sm: 14px;
+  --radius-md: 20px;
+  --radius-lg: 28px;
+  --glass-blur: 16px;
+  --glass-border: 1px solid var(--border);
+  --focus-ring-color: #FFC46B;
+  --font-heading: 'Sora', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  --bg: #F7F6FB;
+  --surface: #FFFFFF;
+  --surface-2: #EFEDF8;
+  --border: rgba(20,20,60,0.10);
+  --text: #14152B;
+  --muted: #5D6086;
+  --accent-text-gradient: linear-gradient(135deg, #5B3FE0, #D6338A);
+  --focus-ring-color: #5B3FE0;
+  color-scheme: light;
+}
+
+/* ── Base ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-body);
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Utility classes ── */
+.font-heading {
+  font-family: var(--font-heading);
+}
+
+.glass {
+  background: color-mix(in srgb, var(--surface) 70%, transparent);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: var(--glass-border);
+}
+
+.accent-text {
+  background: var(--accent-text-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.accent-border {
+  border-image: var(--accent-gradient) 1;
+}
+
+/* Focus ring */
+:focus-visible {
+  outline: 2px solid var(--focus-ring-color);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--muted);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text);
+}
+
+/* ── Animations ── */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes pulse-star {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+@keyframes orbit {
+  from { --orbit-angle: 0deg; }
+  to { --orbit-angle: 360deg; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-out {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(8px); }
+}
+
+@keyframes slide-in-left {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slide-in-bottom {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 0.3s ease-out forwards;
+}
+
+.animate-slide-in-bottom {
+  animation: slide-in-bottom 0.3s ease-out forwards;
+}
+
+.shimmer {
+  background: linear-gradient(90deg, var(--surface-2) 25%, var(--muted) 50%, var(--surface-2) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ── Highlight.js overrides ── */
+.hljs {
+  background: var(--surface) !important;
+  border-radius: var(--radius-sm);
+  padding: 1rem !important;
+  overflow-x: auto;
+}
+
+/* Ensure code blocks in markdown look nice */
+pre {
+  margin: 0.75rem 0;
+  position: relative;
+}
+
+code {
+  font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+  font-size: 0.875rem;
+}
+
+:not(pre) > code {
+  background: var(--surface-2);
+  padding: 0.15em 0.4em;
+  border-radius: 6px;
+  font-size: 0.85em;
+}
